@@ -1,16 +1,12 @@
-# OpenKickstartSwitcher
-OpenKickstartSwitcher is an Open Hardware Triple Kickstart Switcher for Amiga Computers.
+# OpenKickstartSwitcher CDTV Edition
+OpenKickstartSwitcherCDTV is an Open Hardware Triple Kickstart Switcher for the Commodore CDTV.
 
-![Board](https://raw.githubusercontent.com/SukkoPera/OpenKickstartSwitcher/master/doc/render-top.png)
+![Board](https://raw.githubusercontent.com/SukkoPera/OpenKickstartSwitcherCDTV/master/doc/render-top.png)
 
 ### Summary
-OpenKickstartSwitcher is a Kickstart switcher for Amiga computers, based on [work by Henryk Richter](http://bax.comlab.uni-rostock.de/en/hardware/amiga500/kickstart-eprom/). It allows switching among three different Kickstart images, stored in a 27C800 or similar EPROM. In particular, the adapter supports 2x256 KB Kickstart images (i.e.: up to version 1.3) and 1x512 KB image (versions 2.0x and later).
+OpenKickstartSwitcherCDTV is a Kickstart switcher for the Commodore CDTV Entertainment System, based on [work by Henryk Richter](http://bax.comlab.uni-rostock.de/en/hardware/amiga500/kickstart-eprom/). It is basically the same circuit/board as [OpenKickstartSwitcher](https://github.com/SukkoPera/OpenKickstartSwitcher) but tailored in shape to the CDTV.
 
-Switching among Kickstart versions can be done through two physical switches or by pressing the mouse/joystick buttons at power-up. The latter requires [an external add-on board](https://github.com/SukkoPera/OpenAmigaMouseTrigger) that is another project of mine.
-
-The adapter is mostly targeted at Amiga 500+ users, which can use it to switch among Kickstart 2.04 (Or 3.x at their will), 1.3 and maybe [a diagnostic ROM](http://www.diagrom.com), achieving a high level of compatibility with troublesome software that does not work correctly on Kickstart 2.x. It will work correctly on other Amiga versions as well though, as long as it physically fits in place of the original Kickstart ROM, so it can also be useful on the 600 and 2000.
-
-OpenKickstartSwitcher is also compatible with the infamous A500 Rev.5 board, which has a routing error on one of the Kickstart ROM address lines.
+It allows switching among three different Kickstart images, stored in a 27C800 or similar EPROM. In particular, the adapter supports 2x256 KB Kickstart images (i.e.: up to version 1.3) and 1x512 KB image (versions 2.0x and later). Switching can be done through two physical switches or by pressing the mouse/joystick buttons at power-up. The latter requires [an external add-on board](https://github.com/SukkoPera/OpenAmigaMouseTrigger) that is another project of mine.
 
 ### Assembly
 Solder all components to the board. No particular order is recommended, but starting with the smaller components might be a good idea.
@@ -33,36 +29,46 @@ Note that the 27C800 is a 42-pin EPROM, and most programmers only support chips 
 I have only used the latter and found it to be working fine.
 
 ### Installation
-Once your OpenKickstartSwitcher is assembled and programmed, the rest of the installation should be pretty straightforward:
-* Open your Amiga.
+Once your OpenKickstartSwitcherCDTV is assembled and programmed, the rest of the installation should be pretty straightforward:
+* Open your CDTV.
 * Remove the shielding.
-* Identify the mainboard revision by looking at the bottom right corner near the floppy drive zone.
-* Set the jumper on OpenKickstartSwitcher so that it reflects the type of mainboard your Amiga has: one position is for A500 Rev.5 (and Rev.3!), the other one is for all other cases, including A600 and A2000.
 * Identify the Kickstart chip.
 * Carefully remove it.
 * Plug OpenKickstartSwitcher in its place, making sure to match the correct orientation.
-* Drill two holes into the back of your Amiga (or wherever you prefer) and screw two switches in there.
+* Drill two holes into the back of your CDTV (or wherever you prefer) and screw two switches in there.
 * Solder wires to switches.
 * Replace your shielding.
-* Close your Amiga.
+* Close your CDTV.
 
 ### Kickstart selection
-To switch between ROMs, you will need two switches, connected to the SW1/SW2 pads. A ground pad is available on the board, but any ground spot on the Amiga board can be used as well, if easier to reach. Then:
+To switch between ROMs, you will need two switches, connected to the SW1/SW2 pads. A ground pad is available on the board, but any ground spot on the CDTV board can be used as well, if easier to reach. Then:
 
 * If SW2 is HIGH, the 512 KB Kickstart image is selected, regardless of SW1.
 * If SW2 is LOW, SW1 controls which one of the two 256 KB images is enabled: LOW selects the first one, and HIGH selects the second one.
 
 Note that SW1/SW2 will both read as HIGH if left unconnected, so the 512 Kickstart will be selected if no switches are wired.
 
-**IMPORTANT: ALWAYS TURN YOUR AMIGA OFF BEFORE MOVING THE SELECTION SWITCHES.**
+**IMPORTANT: ALWAYS TURN YOUR CDTV OFF BEFORE MOVING THE SELECTION SWITCHES.**
 
 ### License
-OpenKickstartSwitcher is Open Hardware. If you make any modifications to the board, please contribute them back.
+The OpenKickstartSwitcherCDTV documentation, including the design itself, is copyright &copy; SukkoPera 2018.
+
+OpenKickstartSwitcherCDTV is Open Hardware licensed under the [CERN OHL v. 1.2](http://ohwr.org/cernohl).
+
+You may redistribute and modify this documentation under the terms of the CERN OHL v.1.2. This documentation is distributed *as is* and WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES whatsoever with respect to its functionality, operability or use, including, without limitation, any implied warranties OF MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE or infringement. We expressly disclaim any liability whatsoever for any direct, indirect, consequential, incidental or special damages, including, without limitation, lost revenues, lost profits, losses resulting from business interruption or loss of data, regardless of the form of action or legal theory under which the liability may be asserted, even if advised of the possibility or likelihood of such damages.
+
+A copy of the full license is included in file [LICENSE.pdf](LICENSE.pdf), please refer to it for applicable conditions. In order to properly deal with its terms, please see file [LICENSE_HOWTO.pdf](LICENSE_HOWTO.pdf).
+
+The contact points for information about manufactured Products (see section 4.2) are listed in file [PRODUCT.md](PRODUCT.md).
+
+Any modifications made by Licensees (see section 3.4.b) shall be recorded in file [CHANGES.md](CHANGES.md).
+
+The Documentation Location of the original project is https://github.com/SukkoPera/OpenKickstartSwitcherCDTV/.
 
 ### Support the Project
 Since the project is open you are free to get the PCBs made by your preferred manufacturer, however in case you want to support the development, you can order them from PCBWay through this link:
 
-[![PCB from PCBWay](https://www.pcbway.com/project/img/images/frompcbway.png)](https://www.pcbway.com/project/shareproject/OpenKickstartSwitcher_V2.html)
+[![PCB from PCBWay](https://www.pcbway.com/project/img/images/frompcbway.png)](https://www.pcbway.com/project/shareproject/OpenKickstartSwitcherCDTV_V1.html)
 
 You get cheap, professionally-made and good quality PCBs, I get some credit that will help with this and [other projects](https://www.pcbway.com/project/member/shareproject/?bmbid=41100). You won't even have to worry about the various PCB options, it's all pre-configured for you!
 
@@ -74,4 +80,4 @@ Again, if you want to use another manufacturer, feel free to, don't feel obligat
 If you need help or have questions, you can join [the official Telegram group](https://t.me/joinchat/HUHdWBC9J9JnYIrvTYfZmg).
 
 ### Thanks
-Thanks to Henryk Richter and the guys at the Italian Amiga Page forum.
+Thanks to Henryk Richter, Aldo and majinga.
