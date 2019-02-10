@@ -6,12 +6,12 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "OpenKickstartSwitcher"
-Date "2018-12-07"
-Rev "2"
+Date "2019-02-10"
+Rev "1cdtv"
 Comp "SukkoPera"
 Comment1 "Inspired from work by Henryk Richter"
 Comment2 "http://bax.comlab.uni-rostock.de/en/hardware/amiga500/kickstart-eprom/"
-Comment3 ""
+Comment3 "Thanks to Aldo PRS and screwbreaker"
 Comment4 ""
 $EndDescr
 $Comp
@@ -53,7 +53,7 @@ U 1 1 5A2F0238
 P 3825 4150
 F 0 "U1" H 3825 4050 50  0000 C CNN
 F 1 "KS_SOCKET" H 3825 4250 50  0000 C CNN
-F 2 "OpenKickstartSwitcher:DIP-42_DualHeaderStrips" H 3825 4150 50  0001 C CNN
+F 2 "OpenKickstartSwitcher:DIP-40_DualHeaderStrips" H 3825 4150 50  0001 C CNN
 F 3 "DOCUMENTATION" H 3825 4150 50  0001 C CNN
 	1    3825 4150
 	1    0    0    -1  
@@ -126,8 +126,6 @@ Text Label 9100 3950 0    60   ~ 0
 a15
 Text Label 9100 4050 0    60   ~ 0
 a16
-NoConn ~ 4575 3150
-NoConn ~ 3075 3150
 Entry Wire Line
 	2550 3250 2650 3350
 Entry Wire Line
@@ -478,7 +476,7 @@ U 1 1 5A32C9CC
 P 3625 6950
 F 0 "RN2" V 3125 6950 50  0000 C CNN
 F 1 "4.7k" V 4125 6950 50  0001 C CNN
-F 2 "Resistor_THT:R_Array_SIP10" V 4200 6950 50  0001 C CNN
+F 2 "OpenKickstartSwitcher:R_Array_SIP10_OnSide" V 4200 6950 50  0001 C CNN
 F 3 "" H 3625 6950 50  0001 C CNN
 	1    3625 6950
 	-1   0    0    -1  
@@ -489,7 +487,7 @@ U 1 1 5A32CB81
 P 4750 6950
 F 0 "RN1" V 4250 6950 50  0000 C CNN
 F 1 "4.7k" V 5250 6950 50  0001 C CNN
-F 2 "Resistor_THT:R_Array_SIP10" V 5325 6950 50  0001 C CNN
+F 2 "OpenKickstartSwitcher:R_Array_SIP10_OnSide" V 5325 6950 50  0001 C CNN
 F 3 "" H 4750 6950 50  0001 C CNN
 	1    4750 6950
 	1    0    0    -1  
@@ -583,17 +581,6 @@ F 2 "" H 4225 7225 50  0001 C CNN
 F 3 "" H 4225 7225 50  0001 C CNN
 	1    4225 7225
 	1    0    0    -1  
-$EndComp
-$Comp
-L OpenKickstartSwitcher-rescue:Conn_01x03 J1
-U 1 1 5A32E893
-P 1925 3350
-F 0 "J1" H 1925 3550 50  0000 C CNN
-F 1 "Conn_01x03" H 1925 3150 50  0001 C CNN
-F 2 "OpenKickstartSwitcher:Pin_Header_Straight_1x03-ModSilkS" H 1925 3350 50  0001 C CNN
-F 3 "" H 1925 3350 50  0001 C CNN
-	1    1925 3350
-	0    1    1    0   
 $EndComp
 $Comp
 L OpenKickstartSwitcher-rescue:Conn_01x01 J99
@@ -974,35 +961,7 @@ Wire Wire Line
 Wire Wire Line
 	3225 7150 3225 7325
 Wire Wire Line
-	1925 3150 1925 2925
-Wire Wire Line
-	1925 2925 2875 2925
-Wire Wire Line
-	2875 2925 2875 1075
-Wire Wire Line
-	2025 3000 2025 3150
-Wire Wire Line
-	2025 3000 2875 3000
-Wire Wire Line
-	2875 3000 2875 3250
-Wire Wire Line
 	2875 3250 3075 3250
-Wire Wire Line
-	4575 4150 5000 4150
-Wire Wire Line
-	5000 4150 5000 4200
-Wire Wire Line
-	5000 4200 5525 4200
-Wire Wire Line
-	5525 4200 5525 6275
-Wire Wire Line
-	5525 6275 1675 6275
-Wire Wire Line
-	1675 6275 1675 3000
-Wire Wire Line
-	1675 3000 1825 3000
-Wire Wire Line
-	1825 3000 1825 3150
 Wire Wire Line
 	4025 6750 4025 6675
 Wire Wire Line
@@ -1156,6 +1115,9 @@ Wire Wire Line
 	3075 1275 3325 1275
 Wire Wire Line
 	2350 875  2550 875 
+Wire Wire Line
+	2875 1075 2875 3250
+NoConn ~ 4575 4150
 Wire Bus Line
 	6850 2625 6850 3950
 Wire Bus Line
