@@ -74,7 +74,7 @@ You will need to solder an additional switch to the A19 pad on the bottom side o
 ### DiagROM
 The excellent [DiagROM by chucky](http://www.diagrom.com) can be used with OpenKickstartSwitcherCDTV, even though not all functions work on a CDTV.
 
-Normally it is distributed as a 512 KB image, but most of that space is unused, so I have created a 256 KB version by simply truncating the image. It is **NOT GUARANTEED TO WORK**, but it looks fine to me. It can be [downloaded here](https://github.com/SukkoPera/OpenKickstartSwitcher/files/1777856/diagrom-256k.zip).
+Normally it is distributed as a 512 KB image, but most of the space is unused, so I have created a 256 KB version of DiagROM 1.0 by simply truncating the image. It is **NOT GUARANTEED TO WORK**, but it looks fine to me. It can be [downloaded here](https://github.com/SukkoPera/OpenKickstartSwitcher/files/1777856/diagrom-256k.zip).
 
 ### License
 The OpenKickstartSwitcherCDTV documentation, including the design itself, is copyright &copy; SukkoPera 2018-2019.
@@ -106,4 +106,4 @@ Again, if you want to use another manufacturer, feel free to, don't feel obligat
 If you need help or have questions, you can join [the official Telegram group](https://t.me/joinchat/HUHdWBC9J9JnYIrvTYfZmg).
 
 ### Thanks
-Thanks to Henryk Richter, Aldo and majinga.
+Thanks to Henryk Richter, Aldo PRS and [screwbreaker](https://github.com/screwbreaker).
