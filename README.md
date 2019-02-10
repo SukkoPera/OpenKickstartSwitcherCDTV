@@ -11,18 +11,18 @@ It allows switching among three or six different Kickstart images, stored in an 
 ### Assembly
 Solder all components to the board. Starting with the smaller components might be a good idea, and make sure to solder the pin headers and resistor arrays before the socket. When soldering the resistor arrays, don't push them fully through the holes, as you will need to bend them against the board. No particular order is recommended for the remaining components.
 
-The value of the two single resistors is not critical, 10k is recommended, but probably any value between 5k and 50k will do.
+The value of the two single resistors is not critical, 10k is recommended but probably any value between 5k and 50k will do.
 
 My tests show that an SN74HC00 gate works fine. I don't recommend using parts from the *HC* series though, *HCT* or *LS* should be preferred.
 
 The two resistor arrays are not always needed. You might get away without them, depending on the particular EPROM you are using: I have several EPROMs of the same model (but different production batches), and some need the resistors while others don't, so the only way to find out is actual testing. If you decide to install them, they must be of the *bussed* type and the recommended value is 4.7k. Be aware that these parts are polarized and must be installed with the right orientation!
 
 ### EPROM Programming
-I recommend using M27C800-100F1 EPROMs by ST. The access time of the EPROM is not critical: use 100ns or faster EPROMs if you can, but anything up to 150ns should work reliably.
+I recommend using 27C800-100F1 or 27C160-100F1 EPROMs by ST. Access time is not critical: use 100ns or faster EPROMs if you can, but anything up to 150ns should work reliably.
 
-When flashing the EPROM, make sure that the ROM images you are using are exactly 2x262144 and 1x524288 bytes long, and just concatenate them, with the smaller ROMs first. You must also take care to use the correct byte ordering, as the Amiga hardware expects 16-bit words to be stored in the *big-endian* format (which is NOT the format UAE expects them in, for the record).
+When flashing the EPROM, make sure that the ROM images you are using are exactly 2x262144 and 1x524288 bytes long, and just concatenate them. Take care to use the correct byte ordering, as the Amiga hardware expects 16-bit words to be stored in the *big-endian* format (which is NOT the format UAE expects them in, for the record).
 
-Note that the 27C800 is a 42-pin EPROM, and most programmers only support chips up to 40 pins. This is the case with [the popular TL866 programmer](http://autoelectric.cn/EN/TL866_main.html), for instance. You can get around this limitation with an adapter PCB. There are at least two open designs of such an adapter:
+Note that 27C800s and 27C160 are 42-pin EPROMs and most programmers only support chips up to 40 pins. This is the case with [the popular TL866 programmer](http://autoelectric.cn/EN/TL866_main.html), for instance. You can get around this limitation with an adapter PCB. There are at least two open designs of such an adapter:
 * [One by keirff](https://github.com/keirf/PCB-Projects) (who, interestingly, has his own Kickstart Switcher)
 * [And another one by gaggi](https://github.com/gaggi/27c160-tl866-adapter)
 
