@@ -31,13 +31,11 @@ I have only used the latter and found it to be working fine.
 ### Installation
 Once your OpenKickstartSwitcherCDTV is assembled and programmed, the rest of the installation should be pretty straightforward:
 * Open your CDTV.
-* Remove the shielding.
 * Identify the Kickstart chip.
 * Carefully remove it.
 * Plug OpenKickstartSwitcher in its place, making sure to match the correct orientation.
-* Drill two holes into the back of your CDTV (or wherever you prefer) and screw two switches in there.
+* Drill two/three holes into the back of your CDTV (or wherever you prefer) and screw two/three switches in there.
 * Solder wires to switches.
-* Replace your shielding.
 * Close your CDTV.
 
 ### Kickstart selection
@@ -46,10 +44,12 @@ The adapter can be used with either 27C800 or 27C160 EPROMs.
 #### 27C800
 With a 27C800 EPROM, the adapter supports 2x256 KB Kickstart images (i.e.: up to version 1.3) and 1x512 KB image (version 2 and later).
 
-To switch between ROMs, you will need two switches, connected to the SW1/SW2 pads. A ground pad is available on the board, but any ground spot on the mainboard can be used as well, if easier to reach. Then:
+To switch between ROMs, you will need two SPDT switches, connected to the SW1/SW2 pads and ground. A ground pad is available on the board, but any ground spot on the mainboard can be used as well, if easier to reach. Then:
 
 * If SW2 is HIGH, the 512 KB Kickstart image is selected, regardless of SW1.
 * If SW2 is LOW, SW1 controls which one of the two 256 KB images is enabled: LOW selects the first one, and HIGH selects the second one.
+
+You can also use a single ON-OFF-ON DPDT switch, just wire ground to the middle pins, SW1 and SW2 on one side and SW2 on the other.
 
 As SW1/SW2 will both read as HIGH if left unconnected, the 512 Kickstart will be selected if no switches are wired.
 
