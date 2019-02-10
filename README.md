@@ -80,11 +80,6 @@ Once your OpenKickstartSwitcherCDTV is assembled and programmed, the rest of the
 
 Of course, if you use OpenAmigaMouseTrigger there is no need to drill any holes.
 
-### Kickstart selection
-The adapter can be used with either 27C800 or 27C160 EPROMs.
-
-
-
 ### DiagROM
 The excellent [DiagROM by chucky](http://www.diagrom.com) can be used with OpenKickstartSwitcherCDTV, even though not all functions work on a CDTV.
 
