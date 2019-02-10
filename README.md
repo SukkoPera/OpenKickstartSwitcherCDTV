@@ -1,21 +1,21 @@
 # OpenKickstartSwitcher CDTV Edition
-OpenKickstartSwitcherCDTV is an Open Hardware Triple Kickstart Switcher for the Commodore CDTV.
+OpenKickstartSwitcherCDTV is an Open Hardware Kickstart Switcher for the Commodore CDTV.
 
 ![Board](https://raw.githubusercontent.com/SukkoPera/OpenKickstartSwitcherCDTV/master/doc/render-top.png)
 
 ### Summary
 OpenKickstartSwitcherCDTV is a Kickstart switcher for the Commodore CDTV Entertainment System, based on [work by Henryk Richter](http://bax.comlab.uni-rostock.de/en/hardware/amiga500/kickstart-eprom/). It is basically the same circuit/board as [OpenKickstartSwitcher](https://github.com/SukkoPera/OpenKickstartSwitcher) but tailored in shape to the CDTV.
 
-It allows switching among three different Kickstart images, stored in a 27C800 or similar EPROM. In particular, the adapter supports 2x256 KB Kickstart images (i.e.: up to version 1.3) and 1x512 KB image (versions 2.0x and later). Switching can be done through two physical switches or by pressing the mouse/joystick buttons at power-up. The latter requires [an external add-on board](https://github.com/SukkoPera/OpenAmigaMouseTrigger) that is another project of mine.
+It allows switching among three or six different Kickstart images, stored in an similar EPROM. In particular, the adapter supports 2x256 KB Kickstart images (i.e.: up to version 1.3) and 1x512 KB image (versions 2.0x and later). Switching can be done through two physical switches or by pressing the mouse/joystick buttons at power-up. The latter requires [an external add-on board](https://github.com/SukkoPera/OpenAmigaMouseTrigger) that is another project of mine.
 
 ### Assembly
-Solder all components to the board. No particular order is recommended, but starting with the smaller components might be a good idea.
+Solder all components to the board. Starting with the smaller components might be a good idea, and make sure to solder the pin headers and resistor arrays before the socket. When soldering the resistor arrays, don't push them fully through the holes, as you will need to bend them against the board. No particular order is recommended for the remaining components.
 
 The value of the two single resistors is not critical, 10k is recommended, but probably any value between 5k and 50k will do.
 
 My tests show that an SN74HC00 gate works fine. I don't recommend using parts from the *HC* series though, *HCT* or *LS* should be preferred.
 
-The two resistor arrays are not always needed. First of all, these will end up in parallel to RP106 and RP107 on A500 boards, so you must skip them if those are already populated on your particular board. If they are not, you might still get away without them, depending on the particular EPROM you are using: I have several EPROMs of the same model (but different production batches), and some need the resistors while others don't, so the only way to find out is actual testing. For this I usually just load a Kickstart 1.2 disk, start up the four *Demos* and leave them running for a while. If the system does not hang/crash in like 15 minutes (usually it is much quicker than that, sometimes it even hangs before you can start all the demos!), you don't need them, otherwise you do. If you decide to install them, they must be of the *bussed* type and the recommended value is 4.7k. Be aware that these parts are polarized and must be installed in a certain verse!
+The two resistor arrays are not always needed. You might get away without them, depending on the particular EPROM you are using: I have several EPROMs of the same model (but different production batches), and some need the resistors while others don't, so the only way to find out is actual testing. If you decide to install them, they must be of the *bussed* type and the recommended value is 4.7k. Be aware that these parts are polarized and must be installed with the right orientation!
 
 ### EPROM Programming
 I recommend using M27C800-100F1 EPROMs by ST. The access time of the EPROM is not critical: use 100ns or faster EPROMs if you can, but anything up to 150ns should work reliably.
@@ -41,12 +41,32 @@ Once your OpenKickstartSwitcherCDTV is assembled and programmed, the rest of the
 * Close your CDTV.
 
 ### Kickstart selection
-To switch between ROMs, you will need two switches, connected to the SW1/SW2 pads. A ground pad is available on the board, but any ground spot on the CDTV board can be used as well, if easier to reach. Then:
+The adapter can be used with either 27C800 or 27C160 EPROMs.
+
+#### 27C800
+With a 27C800 EPROM, the adapter supports 2x256 KB Kickstart images (i.e.: up to version 1.3) and 1x512 KB image (version 2 and later).
+
+To switch between ROMs, you will need two switches, connected to the SW1/SW2 pads. A ground pad is available on the board, but any ground spot on the mainboard can be used as well, if easier to reach. Then:
 
 * If SW2 is HIGH, the 512 KB Kickstart image is selected, regardless of SW1.
 * If SW2 is LOW, SW1 controls which one of the two 256 KB images is enabled: LOW selects the first one, and HIGH selects the second one.
 
 Note that SW1/SW2 will both read as HIGH if left unconnected, so the 512 Kickstart will be selected if no switches are wired.
+
+#### 27C160
+With a 27C160 EPROM, the adapter supports up to 4x256 KB Kickstart images and 2x512 KB images.
+
+You will need to solder an additional switch to the A19 pad on the bottom side of the board. VCC and GND pads are provided nearby so that you can also solder a pull-up/down resistor.
+
+| ROM Image # | Size (KB) | SW1 | SW2 | A19 |
+|-------------|-----------|-----|-----|-----|
+| 1           | 256       | LOW | LOW | LOW |
+| 2           | 256       | HIGH| LOW | LOW |
+| 3           | 512       |  x  | HIGH| LOW |
+| 4           | 256       | LOW | LOW | HIGH|
+| 5           | 256       | HIGH| LOW | HIGH|
+| 6           | 512       |  x  | HIGH| HIGH|
+
 
 **IMPORTANT: ALWAYS TURN YOUR CDTV OFF BEFORE MOVING THE SELECTION SWITCHES.**
 
