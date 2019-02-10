@@ -17,8 +17,8 @@ My tests show that an SN74HC00 gate works fine. I don't recommend using parts fr
 
 The two resistor arrays are not always needed. You might get away without them, depending on the particular EPROM you are using: I have several EPROMs of the same model (but different production batches), and some need the resistors while others don't, so the only way to find out is actual testing. If you decide to install them, they must be of the *bussed* type and the recommended value is 4.7k. Be aware that these parts are polarized and must be installed with the right orientation!
 
-### EPROM Programming and Switch Wiring
-The adapter can be used with either 27C800 or 27C160 EPROMs. I recommend using -100F1 EPROMs by ST, but access time is not critical: use 100ns or faster EPROMs if you can, but anything up to 150ns should work reliably.
+### EPROM Selection and Switch Wiring
+The adapter can be used with either 27C800 or 27C160 EPROMs. I recommend using *-100F1* EPROMs by ST, but access time is not critical: use 100ns or faster EPROMs if you can, but anything up to 150ns should work reliably.
 
 #### 27C800
 With a 27C800 EPROM, the adapter supports 2x256 KB Kickstart images (i.e.: up to version 1.3) and 1x512 KB image (version 2 and later).
@@ -31,15 +31,17 @@ To switch between ROMs, you will need two SPDT switches, connected to the SW1/SW
 | 2           | 256       | HIGH| LOW |
 | 3           | 512       |  x  | HIGH|
 
+(x = Don't Care)
+
 So, basically:
 * If SW2 is HIGH, the 512 KB Kickstart image is selected, regardless of SW1.
 * If SW2 is LOW, SW1 controls which one of the two 256 KB images is enabled: LOW selects the first one, and HIGH selects the second one.
 
 You can also use a single ON-OFF-ON DPDT switch, just wire ground to the middle pins, SW1 and SW2 on one side and SW2 on the other.
 
-As SW1/SW2 will both read as HIGH if left unconnected, the 512 Kickstart will be selected if no switches are wired.
+As SW1/SW2 will both read as HIGH if left unconnected, the 512 KB Kickstart will be selected if no switches are wired.
 
-Note that you can fully ignore the A19 pad on the bottom side of the board, when using a 27C800 EPROM.
+You can fully ignore the A19 pad on the bottom side of the board, when using a 27C800 EPROM.
 
 #### 27C160
 With a 27C160 EPROM, the adapter supports up to 4x256 KB Kickstart images and 2x512 KB images.
