@@ -6,7 +6,7 @@ OpenKickstartSwitcherCDTV is an Open Hardware Kickstart Switcher for the Commodo
 ### Summary
 OpenKickstartSwitcherCDTV is a Kickstart switcher for the Commodore CDTV Entertainment System, based on [work by Henryk Richter](http://bax.comlab.uni-rostock.de/en/hardware/amiga500/kickstart-eprom/). It is basically the same circuit/board as [OpenKickstartSwitcher](https://github.com/SukkoPera/OpenKickstartSwitcher) but tailored in shape to the CDTV.
 
-It allows switching among three or six different Kickstart images, stored in an similar EPROM. In particular, the adapter supports 2x256 KB Kickstart images (i.e.: up to version 1.3) and 1x512 KB image (versions 2.0x and later). Switching can be done through two physical switches or by pressing the mouse/joystick buttons at power-up. The latter requires [an external add-on board](https://github.com/SukkoPera/OpenAmigaMouseTrigger) that is another project of mine.
+It allows switching among three or six different Kickstart images, stored in an EPROM. Switching can be done through two physical switches or by pressing the mouse/joystick buttons at power-up. The latter requires [an external add-on board](https://github.com/SukkoPera/OpenAmigaMouseTrigger) that is another project of mine.
 
 ### Assembly
 Solder all components to the board. Starting with the smaller components might be a good idea, and make sure to solder the pin headers and resistor arrays before the socket. When soldering the resistor arrays, don't push them fully through the holes, as you will need to bend them against the board. No particular order is recommended for the remaining components.
@@ -51,7 +51,9 @@ To switch between ROMs, you will need two switches, connected to the SW1/SW2 pad
 * If SW2 is HIGH, the 512 KB Kickstart image is selected, regardless of SW1.
 * If SW2 is LOW, SW1 controls which one of the two 256 KB images is enabled: LOW selects the first one, and HIGH selects the second one.
 
-Note that SW1/SW2 will both read as HIGH if left unconnected, so the 512 Kickstart will be selected if no switches are wired.
+As SW1/SW2 will both read as HIGH if left unconnected, the 512 Kickstart will be selected if no switches are wired.
+
+Note that you can fully ignore the A19 pad on the bottom side of the board, when using a 27C800 EPROM.
 
 #### 27C160
 With a 27C160 EPROM, the adapter supports up to 4x256 KB Kickstart images and 2x512 KB images.
@@ -67,11 +69,15 @@ You will need to solder an additional switch to the A19 pad on the bottom side o
 | 5           | 256       | HIGH| LOW | HIGH|
 | 6           | 512       |  x  | HIGH| HIGH|
 
-
 **IMPORTANT: ALWAYS TURN YOUR CDTV OFF BEFORE MOVING THE SELECTION SWITCHES.**
 
+### DiagROM
+The excellent [DiagROM by chucky](http://www.diagrom.com) can be used with OpenKickstartSwitcherCDTV, even though not all functions work on a CDTV.
+
+Normally it is distributed as a 512 KB image, but most of that space is unused, so I have created a 256 KB version by simply truncating the image. It is **NOT GUARANTEED TO WORK**, but it looks fine to me. It can be [downloaded here](https://github.com/SukkoPera/OpenKickstartSwitcher/files/1777856/diagrom-256k.zip).
+
 ### License
-The OpenKickstartSwitcherCDTV documentation, including the design itself, is copyright &copy; SukkoPera 2018.
+The OpenKickstartSwitcherCDTV documentation, including the design itself, is copyright &copy; SukkoPera 2018-2019.
 
 OpenKickstartSwitcherCDTV is Open Hardware licensed under the [CERN OHL v. 1.2](http://ohwr.org/cernohl).
 
