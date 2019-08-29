@@ -6,7 +6,7 @@ OpenKickstartSwitcherCDTV is an Open Hardware Kickstart Switcher for the Commodo
 ### Summary
 OpenKickstartSwitcherCDTV is a Kickstart switcher for the Commodore CDTV Entertainment System, based on [work by Henryk Richter](http://bax.comlab.uni-rostock.de/en/hardware/amiga500/kickstart-eprom/). It is basically the same circuit/board as [OpenKickstartSwitcher](https://github.com/SukkoPera/OpenKickstartSwitcher) but tailored in shape to the CDTV.
 
-It allows switching among three or six different Kickstart images stored in an EPROM. Switching can be done through physical switches or by pressing the mouse/joystick buttons at power-up. The latter requires [an external add-on board](https://github.com/SukkoPera/OpenAmigaMouseTrigger) that is another project of mine.
+It allows switching among three or six different Kickstart images stored in an EPROM. The switching can be done through physical switches or by pressing the mouse/joystick buttons at power-up. The latter requires [an external add-on board](https://github.com/SukkoPera/OpenAmigaMouseTrigger) that is another project of mine.
 
 ### Assembly
 Solder all components to the board. Starting with the smaller components might be a good idea, and make sure to solder the pin headers and resistor arrays before the socket. When soldering the resistor arrays, don't push them fully through the holes, as you will need to bend them against the board. No particular order is recommended for the remaining components.
